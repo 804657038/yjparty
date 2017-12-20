@@ -2,7 +2,21 @@ var data={
     // link:'http://huiya.hengdikeji.com/party/public/index.php/',
     link:'http://127.0.0.1/hyparty/public/index.php/',
     dataList:[
-        {face:"",}
+        {face:"http://www.qqzhi.com/uploadpic/2015-02-02/211841154.jpg",content:"签到成功",time:'1分钟前',
+        name:"邱梓佳",
+        id:1,
+        PraiseList:[
+        	{member_id:{open_name:'123',}},
+        	{member_id:{open_name:'321312',}},
+        ],
+        interaction:true,
+        commont:[
+        	{member_id:{member_id:1,open_name:"123"},
+        	to_member_id:{open_name:'13'},
+        	commont:'123'
+        	}
+        ]
+        }
     ]
 };
 var all=new Vue({
@@ -10,31 +24,32 @@ var all=new Vue({
     data:data,
     created:function(){
         var $this=this;
-        layui.use('flow', function(){
-            var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
-            var flow = layui.flow;
-            flow.load({
-                elem: '#msglist' //指定列表容器
-                ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
-                    var lis = [];
-                    //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-
-                    $this.AjaxL($this.link+'index/index/msglist','GET',{page:page},function(res){
-                        //假设你的列表返回在data集合中
-
-                        var list=res.list;
-                        for(item in list){
-                            $this.dataList.push(list[item]);
-                        }
-                        // $('.listBg').liMarquee({
-                        //     direction:'down'
-                        // });
-                        next(lis.join(''), page < res.last_page);
-                    });
-
-                }
-            });
-        });
+        
+//      layui.use('flow', function(){
+//          var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+//          var flow = layui.flow;
+//          flow.load({
+//              elem: '#msglist' //指定列表容器
+//              ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+//                  var lis = [];
+//                  //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+//
+//                  $this.AjaxL($this.link+'index/index/msglist','GET',{page:page},function(res){
+//                      //假设你的列表返回在data集合中
+//
+//                      var list=res.list;
+//                      for(item in list){
+//                          $this.dataList.push(list[item]);
+//                      }
+//                      // $('.listBg').liMarquee({
+//                      //     direction:'down'
+//                      // });
+//                      next(lis.join(''), page < res.last_page);
+//                  });
+//
+//              }
+//          });
+//      });
         // 连接服务端，workerman.net:2120换成实际部署web-msg-sender服务的域名或者ip
         var socket = io('http://120.24.212.12:2120');
         // var socket = io('http://127.0.0.1:2120');
