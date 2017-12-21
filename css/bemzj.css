@@ -4,15 +4,31 @@
 	margin: 0 auto;
 	background: url(../img/bemzj/index.jpg) no-repeat;
 	background-size: 100% 100%;
+	overflow: hidden;
 }
 .pc_title{
 	width: 100%;
+	position: relative; 
 }
 .pc_title>img:nth-child(1){
 	display: block;	
 	margin: 0 auto;
 	padding-top: 28px;
 	padding-bottom: 28px;
+}
+.pc_title>img:nth-child(2){
+	display: block;	
+	position: absolute;
+	left:-80px;
+	top: 46px;
+}
+.pc_title>img:nth-child(3){
+	display: block;	
+	margin: 0 auto;
+	transform: rotate(180deg);
+	position: absolute;
+	top: 46px;
+	right: -80px;
 }
 .box{
 	width: 725px;

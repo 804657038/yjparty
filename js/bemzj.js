@@ -13,7 +13,17 @@ $(function(){
     	}else if(event.which==38){
 			banner(5);
     	}
-  	});					
+  	});	
+  	//
+  	var times = 2000;
+  	var  tWeen= setInterval(function(){
+		$('.pc_title>img:nth-child(2)').animate({'left':'100%'},times,function(){
+			$(this).css('left','-80px');
+		});
+		$('.pc_title>img:nth-child(3)').animate({'right':'100%'},times,function(){
+			$(this).css('right','-80px');
+		});
+  	},times)
 });
 //无缝轮播
 function banner(time){
